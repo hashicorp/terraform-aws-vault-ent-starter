@@ -1,12 +1,12 @@
 variable "allowed_inbound_cidrs_lb" {
   type        = list(string)
-  description = "List of CIDR blocks to permit inbound traffic from to load balancer"
+  description = "(Optional) List of CIDR blocks to permit inbound traffic from to load balancer"
   default     = null
 }
 
 variable "allowed_inbound_cidrs_ssh" {
   type        = list(string)
-  description = "List of CIDR blocks to permit for SSH to Vault nodes"
+  description = "(Optional) List of CIDR blocks to permit for SSH to Vault nodes"
   default     = null
 }
 
@@ -25,7 +25,7 @@ variable "instance_type" {
 variable "key_name" {
   type        = string
   default     = null
-  description = "key pair to use for SSH access to instance"
+  description = "(Optional) key pair to use for SSH access to instance"
 }
 
 variable "kms_key_deletion_window" {
@@ -108,7 +108,7 @@ variable "user_supplied_kms_key_arn" {
 
 variable "user_supplied_userdata_path" {
   type        = string
-  description = "File path to custom userdata script being supplied by the user"
+  description = "(Optional) File path to custom userdata script being supplied by the user"
   default     = null
 }
 
