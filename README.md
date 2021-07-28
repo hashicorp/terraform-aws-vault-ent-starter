@@ -27,7 +27,8 @@ on AWS using the Enterprise version of Vault 1.8+.
       instances with session manager using the AWS CLI)
     - Amazon VPC
 
-- To deploy without an existing VPC, use the [example VPC](examples/aws-vpc)
+- To deploy without an existing VPC, use the [example
+  VPC](https://github.com/hashicorp/terraform-aws-vault-ent-starter/tree/main/examples/aws-vpc)
   code to build out the pre-requisite environment. Ensure you are selecting a
   region that has at least three [AWS Availability
   Zones](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-availability-zones).
@@ -41,10 +42,11 @@ on AWS using the Enterprise version of Vault 1.8+.
     specifically tagged so you can identify them. The Vault module will use
     these tags to deploy the Vault servers into them.)
 
-- Use the [example](examples/aws-secrets-manager-acm) code to create TLS certs
-  and store them in [AWS Secrets Manager](https://aws.amazon.com/secrets-manager/)
-  along with importing them into [AWS Certificate
-  Manager](https://aws.amazon.com/certificate-manager/)
+- Use the
+  [example](https://github.com/hashicorp/terraform-aws-vault-ent-starter/tree/main/examples/aws-secrets-manager-acm)
+  code to create TLS certs and store them in [AWS Secrets
+  Manager](https://aws.amazon.com/secrets-manager/) along with importing them
+  into [AWS Certificate Manager](https://aws.amazon.com/certificate-manager/)
 
 - Create a Terraform configuration that pulls in the Vault module and specifies
   values for the required variables:
@@ -142,4 +144,5 @@ Success! Vault is initialized
 ## License
 
 This code is released under the Mozilla Public License 2.0. Please see
-[LICENSE](LICENSE) for more details.
+[LICENSE](https://github.com/hashicorp/terraform-aws-vault-ent-starter/blob/main/LICENSE)
+for more details.
