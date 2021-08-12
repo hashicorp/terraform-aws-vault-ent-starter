@@ -16,9 +16,10 @@ timedatectl set-timezone UTC
 # removing any default installation files from /opt/vault/tls/
 rm -rf /opt/vault/tls/*
 
-touch /opt/vault/tls/{vault-cert.pem,vault-ca.pem,vault-key.pem}
-chown vault:vault /opt/vault/tls/{vault-cert.pem,vault-ca.pem,vault-key.pem}
-chmod 0640 /opt/vault/tls/{vault-cert.pem,vault-ca.pem,vault-key.pem}
+# vault-key.pem should be readable by the vault group only
+touch /opt/vault/tls/vault-key.pem
+chown root:vault /opt/vault/tls/vault-key.pem
+chmod 0640 /opt/vault/tls/vault-key.pem
 
 secret_result=$(aws secretsmanager get-secret-value --secret-id ${secrets_manager_arn} --region ${region} --output text --query SecretString)
 
@@ -29,12 +30,15 @@ jq -r .vault_ca <<< "$secret_result" | base64 -d > /opt/vault/tls/vault-ca.pem
 jq -r .vault_pk <<< "$secret_result" | base64 -d > /opt/vault/tls/vault-key.pem
 
 aws s3 cp "s3://${s3_bucket_vault_license}/${vault_license_name}" /opt/vault/vault.hclic
-chown vault:vault /opt/vault/vault.hclic
+# vault.hclic should be readable by the vault group only
+chown root:vault /opt/vault/vault.hclic
 chmod 0640 /opt/vault/vault.hclic
 
 cat << EOF > /etc/vault.d/vault.hcl
 disable_performance_standby = true
 ui = true
+disable_mlock = true
+
 storage "raft" {
   path    = "/opt/vault/data"
   node_id = "$instance_id"
@@ -68,8 +72,10 @@ license_path = "/opt/vault/vault.hclic"
 
 EOF
 
-chown -R vault:vault /etc/vault.d/*
-chmod -R 640 /etc/vault.d/*
+# vault.hcl should be readable by the vault group only
+chown root:root /etc/vault.d
+chown root:vault /etc/vault.d/vault.hcl
+chmod 640 /etc/vault.d/vault.hcl
 
 systemctl enable vault
 systemctl start vault
