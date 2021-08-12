@@ -125,7 +125,7 @@ variable "vault_license_name" {
 
 variable "vault_version" {
   type        = string
-  default     = "1.8.0"
+  default     = "1.8.1"
   description = "Vault version"
 }
 
