@@ -59,7 +59,7 @@ provider "aws" {
 
 module "vault-ent" {
   source  = "hashicorp/vault-ent-starter/aws"
-  version = "0.1.0"
+  version = "0.1.1"
 
   # prefix for tagging/naming AWS resources
   resource_name_prefix = "test"
