@@ -139,6 +139,11 @@ resource "aws_launch_template" "vault" {
   iam_instance_profile {
     name = var.aws_iam_instance_profile
   }
+
+  metadata_options {
+    http_endpoint = "enabled"
+    http_tokens   = "required"
+  }
 }
 
 resource "aws_autoscaling_group" "vault" {
