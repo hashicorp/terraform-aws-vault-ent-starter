@@ -1,4 +1,4 @@
-## 0.1.2 (August 20, 2021)
+## 0.1.2 (August 19, 2021)
 
 * Update TLS directory permissions
 * Remove client cert and key from profile script
