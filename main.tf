@@ -66,6 +66,13 @@ module "user_data" {
   vault_version               = var.vault_version
 }
 
+locals {
+  vault_target_group_arns = concat(
+    [module.loadbalancer.vault_target_group_arn],
+    var.additional_lb_target_groups,
+  )
+}
+
 module "vm" {
   source = "./modules/vm"
 
@@ -82,6 +89,6 @@ module "vm" {
   user_supplied_ami_id      = var.user_supplied_ami_id
   vault_lb_sg_id            = module.loadbalancer.vault_lb_sg_id
   vault_subnets             = module.networking.vault_subnet_ids
-  vault_target_group_arn    = module.loadbalancer.vault_target_group_arn
+  vault_target_group_arns   = local.vault_target_group_arns
   vpc_id                    = module.networking.vpc_id
 }
