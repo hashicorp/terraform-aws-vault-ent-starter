@@ -67,9 +67,9 @@ variable "node_count" {
   description = "Number of Vault nodes to deploy in ASG"
 }
 
-variable "private_subnet_tags" {
-  type        = map(string)
-  description = "Tags which specify the subnets to deploy Vault into"
+variable "private_subnet_ids" {
+  type        = list(string)
+  description = "Subnet IDs to deploy Vault into"
 }
 
 variable "resource_name_prefix" {

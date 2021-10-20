@@ -52,8 +52,8 @@ resource "aws_security_group_rule" "vault_internal_raft" {
 # (which are the private subnets the Vault instances use)
 
 data "aws_subnet" "subnet" {
-  for_each = toset(var.vault_subnets)
-  id       = each.value
+  count = length(var.vault_subnets)
+  id    = var.vault_subnets[count.index]
 }
 
 locals {
