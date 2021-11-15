@@ -23,16 +23,17 @@ module "kms" {
 module "loadbalancer" {
   source = "./modules/load_balancer"
 
-  allowed_inbound_cidrs = var.allowed_inbound_cidrs_lb
-  common_tags           = var.common_tags
-  lb_certificate_arn    = var.lb_certificate_arn
-  lb_health_check_path  = var.lb_health_check_path
-  lb_subnets            = module.networking.vault_subnet_ids
-  lb_type               = var.lb_type
-  resource_name_prefix  = var.resource_name_prefix
-  ssl_policy            = var.ssl_policy
-  vault_sg_id           = module.vm.vault_sg_id
-  vpc_id                = module.networking.vpc_id
+  allowed_inbound_cidrs   = var.allowed_inbound_cidrs_lb
+  common_tags             = var.common_tags
+  lb_certificate_arn      = var.lb_certificate_arn
+  lb_deregistration_delay = var.lb_deregistration_delay
+  lb_health_check_path    = var.lb_health_check_path
+  lb_subnets              = module.networking.vault_subnet_ids
+  lb_type                 = var.lb_type
+  resource_name_prefix    = var.resource_name_prefix
+  ssl_policy              = var.ssl_policy
+  vault_sg_id             = module.vm.vault_sg_id
+  vpc_id                  = module.networking.vpc_id
 }
 
 module "networking" {
