@@ -14,6 +14,4 @@ module "vpc" {
   public_subnets         = var.public_subnet_cidrs
 
   tags = var.common_tags
-
-  private_subnet_tags = var.private_subnet_tags
 }

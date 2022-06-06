@@ -25,10 +25,3 @@ along with all the other required infrastructure components.
   variable). You may change this if wish to deploy Vault elsewhere, but please
   be sure to change the value for the `azs` variable as well and specify the
   appropriate availability zones for your new region.
-
-- You must note the value for `private_subnet_tags` (this value is provided as
-  output to you after Terraform runs). This will be required input to the Vault
-  installation module and allows the Vault nodes to be correctly deployed in
-  private subnets. If you change the default value set for `private_subnet_tags`
-  in this example, please be sure to provide it when running the Vault
-  installation module as well.

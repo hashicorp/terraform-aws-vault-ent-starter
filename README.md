@@ -57,7 +57,7 @@ provider "aws" {
 
 module "vault-ent" {
   source  = "hashicorp/vault-ent-starter/aws"
-  version = "0.1.2"
+  version = "0.2.0"
 
   # prefix for tagging/naming AWS resources
   resource_name_prefix = "test"
@@ -65,7 +65,11 @@ module "vault-ent" {
   vpc_id = "vpc-abc123xxx"
   # private subnet IDs are required and allow you to specify which
   # subnets you will deploy your Vault nodes into
-  private_subnet_ids = ["subnet-0d75d14952ac68ec3"]
+  private_subnet_ids = [
+    "subnet-0xyz",
+    "subnet-1xyz",
+    "subnet-2xyz",
+  ]
   # AWS Secrets Manager ARN where TLS certs are stored
   secrets_manager_arn = "arn:aws::secretsmanager:abc123xxx"
   # The shared DNS SAN of the TLS certs being used
