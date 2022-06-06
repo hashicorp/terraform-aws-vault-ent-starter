@@ -28,7 +28,7 @@ module "loadbalancer" {
   lb_certificate_arn      = var.lb_certificate_arn
   lb_deregistration_delay = var.lb_deregistration_delay
   lb_health_check_path    = var.lb_health_check_path
-  lb_subnets              = module.networking.vault_subnet_ids
+  lb_subnets              = var.private_subnet_ids
   lb_type                 = var.lb_type
   resource_name_prefix    = var.resource_name_prefix
   ssl_policy              = var.ssl_policy
@@ -39,8 +39,7 @@ module "loadbalancer" {
 module "networking" {
   source = "./modules/networking"
 
-  private_subnet_tags = var.private_subnet_tags
-  vpc_id              = var.vpc_id
+  vpc_id = var.vpc_id
 }
 
 module "object_storage" {
@@ -89,7 +88,7 @@ module "vm" {
   userdata_script           = module.user_data.vault_userdata_base64_encoded
   user_supplied_ami_id      = var.user_supplied_ami_id
   vault_lb_sg_id            = module.loadbalancer.vault_lb_sg_id
-  vault_subnets             = module.networking.vault_subnet_ids
+  vault_subnets             = var.private_subnet_ids
   vault_target_group_arns   = local.vault_target_group_arns
   vpc_id                    = module.networking.vpc_id
 }

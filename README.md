@@ -38,9 +38,7 @@ on AWS using the Enterprise version of Vault 1.8+.
   - Three public subnets
   - Three [NAT
     gateways](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html) (one in each public subnet)
-  - Three private subnets (please make sure your private subnets are
-    specifically tagged so you can identify them. The Vault module will use
-    these tags to deploy the Vault servers into them.)
+  - Three private subnets
 
 - Use the
   [example](https://github.com/hashicorp/terraform-aws-vault-ent-starter/tree/main/examples/aws-secrets-manager-acm)
@@ -65,11 +63,9 @@ module "vault-ent" {
   resource_name_prefix = "test"
   # VPC ID you wish to deploy into
   vpc_id = "vpc-abc123xxx"
-  # private subnet tags are required and allow you to filter which
+  # private subnet IDs are required and allow you to specify which
   # subnets you will deploy your Vault nodes into
-  private_subnet_tags = {
-    Vault = "deploy"
-  }
+  private_subnet_ids = ["subnet-0d75d14952ac68ec3"]
   # AWS Secrets Manager ARN where TLS certs are stored
   secrets_manager_arn = "arn:aws::secretsmanager:abc123xxx"
   # The shared DNS SAN of the TLS certs being used
