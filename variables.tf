@@ -10,6 +10,12 @@ variable "allowed_inbound_cidrs_ssh" {
   default     = null
 }
 
+variable "additional_lb_target_groups" {
+  type        = list(string)
+  description = "(Optional) List of load balancer target groups to associate with the Vault cluster. These target groups are _in addition_ to the LB target group this module provisions by default."
+  default     = []
+}
+
 variable "common_tags" {
   type        = map(string)
   description = "(Optional) Map of common tags for all taggable AWS resources."
