@@ -1,25 +1,11 @@
-variable "aws_region" {
-  description = "AWS region to deploy resources into"
-  type        = string
-  default     = "us-east-1"
-}
-
 variable "azs" {
   description = "availability zones to use in AWS region"
   type        = list(string)
-  default = [
-    "us-east-1a",
-    "us-east-1b",
-    "us-east-1c",
-  ]
 }
 
 variable "common_tags" {
   type        = map(string)
   description = "Tags for VPC resources"
-  default = {
-    Vault = "dev"
-  }
 }
 
 variable "resource_name_prefix" {
