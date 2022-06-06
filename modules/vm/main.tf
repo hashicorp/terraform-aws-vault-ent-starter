@@ -152,7 +152,7 @@ resource "aws_autoscaling_group" "vault" {
   max_size            = var.node_count
   desired_capacity    = var.node_count
   vpc_zone_identifier = var.vault_subnets
-  target_group_arns   = [var.vault_target_group_arn]
+  target_group_arns   = var.vault_target_group_arns
 
   launch_template {
     id      = aws_launch_template.vault.id

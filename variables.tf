@@ -10,6 +10,12 @@ variable "allowed_inbound_cidrs_ssh" {
   default     = null
 }
 
+variable "additional_lb_target_groups" {
+  type        = list(string)
+  description = "(Optional) List of load balancer target groups to associate with the Vault cluster. These target groups are _in addition_ to the LB target group this module provisions by default."
+  default     = []
+}
+
 variable "common_tags" {
   type        = map(string)
   description = "(Optional) Map of common tags for all taggable AWS resources."
@@ -42,6 +48,12 @@ variable "leader_tls_servername" {
 variable "lb_certificate_arn" {
   type        = string
   description = "ARN of TLS certificate imported into ACM for use with LB listener"
+}
+
+variable "lb_deregistration_delay" {
+  type        = string
+  description = "Amount time, in seconds, for Vault LB target group to wait before changing the state of a deregistering target from draining to unused."
+  default     = 300
 }
 
 variable "lb_health_check_path" {
