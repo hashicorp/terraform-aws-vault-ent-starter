@@ -1,3 +1,13 @@
+## 0.2.0 (June 06, 2022)
+
+* Update examples directory with quickstart file that reduces number of steps to
+  provision pre-reqs
+* Remove data sources for AWS subnets and allow user to explicitly specify
+  private subnet IDs in main module
+* Update main module outputs
+* Update default Vault version to latest version (1.10.3)
+* Update Terraform version pin
+
 ## 0.1.2 (August 19, 2021)
 
 * Update TLS directory permissions
