@@ -9,7 +9,7 @@ local_ipv4=$( curl -Ss -H "X-aws-ec2-metadata-token: $imds_token" 169.254.169.25
 curl -fsSL https://apt.releases.hashicorp.com/gpg | apt-key add -
 apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
 apt-get update
-apt-get install -y vault-enterprise=${vault_version}+ent awscli jq
+apt-get install -y vault-enterprise=${vault_version}"*" awscli jq
 
 echo "Configuring system time"
 timedatectl set-timezone UTC
