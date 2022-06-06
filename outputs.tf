@@ -17,3 +17,8 @@ output "vault_target_group_arn" {
   description = "Target group ARN to register Vault nodes with"
   value       = module.loadbalancer.vault_target_group_arn
 }
+
+output "vault_sg_id" {
+  description = "Security group ID of Vault cluster"
+  value       = module.vm.vault_sg_id
+}
