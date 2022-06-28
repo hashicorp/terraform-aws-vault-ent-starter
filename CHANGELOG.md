@@ -1,3 +1,7 @@
+## 0.2.1 (June 28, 2022)
+
+* Update package name syntax in userdata script to prevent breakage when installing latest versions of Vault enterprise.
+
 ## 0.2.0 (June 06, 2022)
 
 * Update examples directory with quickstart file that reduces number of steps to
