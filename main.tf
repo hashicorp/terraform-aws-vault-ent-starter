@@ -6,6 +6,7 @@ module "iam" {
   aws_bucket_vault_license_arn = module.object_storage.s3_bucket_vault_license_arn
   aws_region                   = data.aws_region.current.name
   kms_key_arn                  = module.kms.kms_key_arn
+  permissions_boundary         = var.permissions_boundary
   resource_name_prefix         = var.resource_name_prefix
   secrets_manager_arn          = var.secrets_manager_arn
   user_supplied_iam_role_name  = var.user_supplied_iam_role_name

@@ -1,3 +1,7 @@
+## Unreleased
+
+* Add `permissions_boundary` variable to support creating the IAM Role with a permissions boundary
+
 ## 0.2.1 (June 28, 2022)
 
 * Update package name syntax in userdata script to prevent breakage when installing latest versions of Vault enterprise.
