@@ -79,6 +79,12 @@ variable "node_count" {
   description = "Number of Vault nodes to deploy in ASG"
 }
 
+variable "permissions_boundary" {
+  description = "(Optional) IAM Managed Policy to serve as permissions boundary for created IAM Roles"
+  type        = string
+  default     = null
+}
+
 variable "private_subnet_ids" {
   type        = list(string)
   description = "Subnet IDs to deploy Vault into"

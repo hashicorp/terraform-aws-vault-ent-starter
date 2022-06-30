@@ -2,6 +2,10 @@ output "kms_key_arn" {
   value = module.kms.kms_key_arn
 }
 
+output "launch_template_id" {
+  value = module.vm.launch_template_id
+}
+
 output "vault_lb_dns_name" {
   description = "DNS name of Vault load balancer"
   value       = module.loadbalancer.vault_lb_dns_name
