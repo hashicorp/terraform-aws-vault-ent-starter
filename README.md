@@ -51,7 +51,7 @@ provider "aws" {
 
 module "vault-ent" {
   source  = "hashicorp/vault-ent-starter/aws"
-  version = "0.2.0"
+  version = "~> 0.2"
 
   # prefix for tagging/naming AWS resources
   resource_name_prefix = "test"
@@ -91,9 +91,8 @@ module "vault-ent" {
 
   - To initialize the Vault cluster, run the following commands:
 
-```
-$ sudo -i
-# vault operator init
+```bash
+vault operator init
 ```
 
   - This should return back the following output which includes the recovery
@@ -111,9 +110,9 @@ Success! Vault is initialized
     [list-peers](https://www.vaultproject.io/docs/commands/operator/raft#list-peers)
     command:
 
-```
-# export VAULT_TOKEN="<your Vault token>"
-# vault operator raft list-peers
+```bash
+export VAULT_TOKEN="<your Vault token>"
+vault operator raft list-peers
 ```
 
 - Please note that Vault does not enable [dead server
@@ -122,8 +121,8 @@ Success! Vault is initialized
   configuration every time there is a change in the Vault ASG. To enable dead
   server cleanup, run the following command:
 
- ```
-# vault operator raft autopilot set-config \
+ ```bash
+vault operator raft autopilot set-config \
     -cleanup-dead-servers=true \
     -dead-server-last-contact-threshold=10 \
     -min-quorum=3
@@ -131,8 +130,8 @@ Success! Vault is initialized
 
 - You can verify these settings after you apply them by running the following command:
 
-```
-# vault operator raft autopilot get-config
+```bash
+vault operator raft autopilot get-config
 ```
 
 ## License
